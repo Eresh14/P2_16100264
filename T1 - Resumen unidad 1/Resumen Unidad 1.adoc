@@ -1,0 +1,134 @@
+= RESUMEN UNIDAD 1
+
+=== Modelo de cajas
+El modelo de cajas es el comportamiento de CSS que hace que todos los elementos de las páginas se representen mediante cajas rectangulares. Estas cajas de una página se crean automáticamente cada vez que se inserta una etiqueta HTML, las cajas no son visibles a simple vista porque inicialmente no muestran ningún color de fondo ni ningún borde. Los navegadores crean y colocan las cajas de forma automática, pero CSS permite modificar todas sus características.
+
+[image :: https://s3-us-west-2.amazonaws.com/devcodepro/media/tutorials/modelo-caja-css-t1.jpg]
+
+* **content:** Es el elemento visible.
+* **padding:** Es un margen interior transparente entre el borde y el elemento.
+* **border:** Es un borde visible que comienza donde termina el padding.
+* **margin:** Es un margen exterior transparente que comienza donde termina el borde.
+* **outline:**  Es una línea que es trazada al rededor de los elementos, fuera de los bordes.
+
+=== Propiedades display
+* **inline:** Hace que la caja de un elemento sea de línea.
+* **inline-box:** Hace que la caja de un elemento sea de bloque.
+* **none:** Hace que el elemento no genere ninguna caja. De este modo el elemento desaparece de la página y no genera ningún espacio. Otros elementos pueden usar ese espacio.
+
+=== Box-sizing
+* **border-box:** Hace que el padding y border se incluyan en el tamaño del elemento (width y height).
+* **content-box**  width y height sólo hacen referencia al tamaño del elemento sin tomar en cuenta padding, border o margin.
+
+=== Flujo de documento
+El flujo normal de un documento es:
+
+* Un elemento se coloca tan alto y tan a la izquierda como sea posible.
+* Añadir otro elemento hará que éste se coloque a su derecha hasta que no haya más espacio.
+* Cuando ya no hay más espacio hacia la derecha se salta a la línea de abajo y comienza de nuevo desde la izquierda.
+
+**Posicionamiento**
+
+* **static:** Son aquellos elementos que permanecen estáticos en el flujo del documento.
+* **relative:** Sigue dos principios:
+** Desplaza la caja fuera de su lugar en el flujo.
+** Reserva su lugar original en el flujo.
+* **absolute:** Saca al elemento del flujo. Los demás elementos de la página se comportan como si el absotulo ya no estuviera ahí.
+* **fixed:** Se comporta parecido a un elemento absoluto con la diferencia de que los demás elementos no se desplazan. Esto quiere decir que se reserva su lugar original en el flujo.
+* **float:** A diferencia de los anteriores, float no es un valor de la propiedad "position",  sino que es una propiedad de CSS. float se comporta de la siguiente manera:
+** Se eleva y sale del flujo normal.
+** Flota dentro de un elemento contenedor.
+
+=== Unidades de medida
+**Absolutas**
+
+* **in** - Pulgadas.
+* **cm** - Centimetros.
+* **pc** - Picas.
+* **mm** - Milimetros.
+* **pt** - Puntos.
+* **px** - Pixeles.
+
+**Relativas**
+
+* **em** - Hace referencia al tamaño fuente del navegador. 
+* **ex** - Hace referencia a la altura de la x minúscula.
+* **ch** - Ancho del 0 (cero).
+* **rem** - Tamaño fuente de root. Se utiliza a escala.
+* **%** - Porcentaje en relación al navegador o tamaño de la página.
+
+=== Selectores básicos
+* **Etiqueta:** Selecciona todos los elementos de la página cuya etiqueta HTML coincide con el nombre de la CSS.
+
+* **Clase:** Aplica reglas CSS a una clase HTML.
+
+* **ID** Permite seleccionar un elemento de una página a través de su valor id.
+
+=== Selectores de relación
+* **Descendente:** Le da estilo a uno o más elementos que se encuentran dentro de otros elementos. Ejemplo: **div p:** todos los elementos *p* que estén dentro de un **div**.
+
+* **Selector de hijo:** Le da estilo a un elemento que es hijo de otro elemento, tiene que ser hijo directo, se representa con el símbolo mayor que "*>*".
+
+* **Selector adyacente de hermanos:** Le da estilo a un elemento que sea hermano de otro, es decir que los dos elementos tengan el mismo padre, se indica con el signo *+*.
+
+* **Selector general de hermanos:** Es igual que el selector adyacente, sólo que éste sí toma en cuenta a todos los hermanos. Se indica con el símbolo **~**.
+
+=== Pseudo-clases
+Se utilizan pseudoclases para definir un estado especial de un elemento, por ejemplo, pueden ser utilizados para:
+
+* Dar estilo cuando se pasa el cursor por encima.
+* Dar estilo a links visitados y los que no.
+* Dar estilo a un elemento cuando se es seleccionado.
+
+
+**Pseudoclases**
+
+**:normal** Su estado normal.
+
+**:visited** Cuando ya hemos visitado el link al que hace referencia.
+
+**:hover** Cuando tenemos el cursor situado encima del mismo.
+
+**:active** Cuando hacemos click sobre él.
+
+**:focus** Aplica estilos cuando el elemento es seleccionado.
+
+**:checked** Aplica estilos cuando la casilla es seleccionada.
+
+**:enabled** Da estilo cuando el campo del formulario está activado.
+
+**:disabled** Da estilo cuando el campo del formulario está desactivado.
+
+**:out of range** Otorga estilo a los campos numéricos que están fuera de rango.
+
+**:first-child:** Da estilo del primer elemento de un tipo de selector si es el primer hijo de su elemento padre.
+
+**:first-of-type** Da estilo al primer elemento de un tipo de selector si es el primer hijo que aparece con su tipo de selector en su elemento padre.
+
+**:last-child** Igual que first child pero con el último hijo.
+
+**:last-of-type** Igual que first of type pero con el último tipo.
+
+=== Pseudo-elementos
+
+**:first-line** Este pseudo-elemento permite aplicar un estilo determinado a la primera línea de un párrafo.
+
+**:first-letter** Permite seleccionar la primer letra de un párrafo.
+
+**:before y :after** Con los pseudo-elementos :before (antes) y :after (después) se puede insertar un contenido antes o después de un elemento determinado y definir el estilo del contenido insertado.
+
+=== Cascada
+Es el mecanismo que controla el resultado final cuando se aplican varias declaraciones CSS contrapuestas al mismo elemento.
+Hay tres conceptos principales que controlan el orden en el que se aplican las declaraciones de CSS:
+
+* **Importancia:** La importancia de una declaración de CSS depende de dónde se ha especificado. Las declaraciones contrapuestas se aplicarán en el orden siguiente: las nuevas anularán a las más antiguas.
+
+* **Especificidad: ** La especificidad es algo que todos los autores de CSS deben comprender y tener en cuenta. Puede considerarse una medida de cuán específico es el selector de una regla. Un selector de especificidad baja puede dar como resultado muchos elementos (como *, que da como resultado todos los elementos del documento), mientras que un selector con una especificidad elevada puede que sólo dé como resultado un único elemento de una página.
+** **inline:** 1000 puntos.
+** **id:** 100 puntos.
+** **clase:** 10 puntos.
+** **elemento:** 1 punto.
+** **universal** 0 puntos.
+
+* **Orden en las fuentes: **Si dos declaraciones afectan al mismo elemento, tienen la misma importancia y la misma especificidad, la señal distintiva final es el orden en las fuentes. La declaración que se ve más adelante en las hojas de estilo "ganará" a las anteriores.
+
